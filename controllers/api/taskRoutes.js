@@ -115,30 +115,61 @@ const withAuth = require("../../utils/auth")
 // });
 
 
-router.delete('/delete/:id', withAuth , async (req, res) => {
+// Delete a task
+router.delete('/delete/:id', withAuth, async (req, res) => {
     try {
-        
-        const taskId = req.params.id;
-        const userId = req.session.user_id;
-
-        const task = await Task.findOne({
-            where: {
-                id: taskId,
-                user_id : userId,
-            },
-        });
-
-        if(!task) {
-            res.status(404).json({message: 'Task not found or you dont have the permission to delete it.'});
-            return;
-        }
-        // Destroy task
-        await task.destroy();
-        res.status(200).json({message: 'Task deleted successfully'}); 
+      const taskId = req.params.id;
+      const userId = req.session.user_id;
+  
+      const task = await Task.findOne({
+        where: {
+          id: taskId,
+          user_id: userId,
+        },
+      });
+  
+      if (!task) {
+        res.status(404).json({ message: 'Task not found or you do not have permission to delete it.' });
+        return;
+      }
+  
+      await task.destroy();
+      res.status(200).json({ message: 'Task deleted successfully' });
     } catch (err) {
-        console.log(err);
-        res.status(500).json({message: 'Internl server error'}); 
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
     }
-});
-
-module.exports = router;
+  });
+  
+  // Update a task
+  router.put('/update/:id', withAuth, async (req, res) => {
+    try {
+      const taskId = req.params.id;
+      const userId = req.session.user_id;
+      const { name, details } = req.body;
+  
+      const task = await Task.findOne({
+        where: {
+          id: taskId,
+          user_id: userId,
+        },
+      });
+  
+      if (!task) {
+        res.status(404).json({ message: 'Task not found or you do not have permission to update it.' });
+        return;
+      }
+  
+      task.name = name;
+      task.details = details;
+      await task.save();
+  
+      res.status(200).json({ message: 'Task updated successfully' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+  module.exports = router;
+  

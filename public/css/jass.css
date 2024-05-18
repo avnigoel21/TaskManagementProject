@@ -5,7 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-html {
+ html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -24,7 +24,7 @@ body {
 /**
  * Render the `main` element consistently in IE.
  */
-main {
+/* main {
   display: block;
 }
 
@@ -39,7 +39,66 @@ main {
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-body {
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-list li {
+  margin-bottom: 10px;
+}
+
+.menu-list li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-list li a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.container {
+  padding: 20px;
+}
+
+.menu-container {
+  margin-bottom: 20px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list li {
+  margin-bottom: 10px;
+}
+
+.task-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.btn-group {
+  margin-top: 10px;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+ */
+
+
+
+ body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
   margin: 0;
@@ -56,7 +115,7 @@ body {
   display: flex;
 }
 
-.col-md-3, .col-md-9{
+.col-md-3, .col-md-9 {
   padding: 15px;
 }
 
@@ -80,21 +139,21 @@ body {
   margin-bottom: 10px;
 }
 
-.menu-list li a {
-  display: block;
-  font-weight: bold;
-  padding: 10px;
-  text-decoration: none;
+.menu-list a {
   color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
-.menu-list li a:hover {
+.menu-list a:hover {
   background-color: #495057;
 }
 
-.task-list{
+.task-list {
   list-style: none;
   padding: 0;
 }
@@ -112,7 +171,7 @@ body {
   font-size: 1.25em;
 }
 
-.task-details{
+.task-details {
   margin: 0 0 10px;
   color: #6c757d;
 }
@@ -127,7 +186,6 @@ body {
   gap: 10px;
 }
 
-
 .btn {
   padding: 10px 15px;
   border: none;
@@ -141,19 +199,17 @@ body {
   color: #ffffff;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: #0056b3;
 }
 
-.btn-danger{
+.btn-danger {
   background-color: #dc3545;
   color: #ffffff;
 }
 
-
-.btn-danger:hover{
+.btn-danger:hover {
   background-color: #c82333;
-
 }
 
 
