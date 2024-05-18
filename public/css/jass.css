@@ -97,7 +97,6 @@ body {
  */
 
 
-
  body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
@@ -106,8 +105,8 @@ body {
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: calc(100% - 250px); /* Adjust to leave space for the sidebar */
+  margin-left: 250px; /* Shift the container to the right of the sidebar */
   padding: 20px;
 }
 
@@ -115,14 +114,21 @@ body {
   display: flex;
 }
 
-.col-md-3, .col-md-9 {
+.col-md-9 {
   padding: 15px;
+  margin-left: 250px; /* Adjust this value to match the width of the sidebar */
 }
 
 .sidebar {
   background-color: #343a40;
   padding: 20px;
   border-radius: 5px;
+  position: fixed; /* Position the sidebar */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  height: 100%; /* Occupy full height */
+  width: 250px; /* Set the width of the sidebar */
+  z-index: 1000; /* Ensure it's above other content */
 }
 
 .sidebar-title {
@@ -212,12 +218,6 @@ body {
   background-color: #c82333;
 }
 
-
-
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
